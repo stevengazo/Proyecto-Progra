@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using CapaNegocios;
 namespace WpfInterfacePrincipal
 {
     /// <summary>
@@ -23,6 +23,45 @@ namespace WpfInterfacePrincipal
         public MainWindow()
         {
             InitializeComponent();
+            Comprobaciones();
+        }
+        protected void Comprobaciones()
+        {
+            Archivo archivos = new Archivo();
+            bool bandArchivos = archivos.ComprobarArchivos();
+            if (!bandArchivos)
+            {
+                MessageBox.Show("No se encontraron los archivos del programa", "Error");
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItemUbicacion_Click(object sender, RoutedEventArgs e)
+        {
+            WpfUbicaciones wpfUbicacion = new WpfUbicaciones();
+            wpfUbicacion.Show();
+        }
+
+        private void MenuItemSalida_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAgregar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnLimpiar_Click(object sender, RoutedEventArgs e)
+        {
+            txtCodigo.Text = string.Empty;
+            txtEstado.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            comboxUbicacion.SelectedItem = string.Empty;
         }
     }
 }

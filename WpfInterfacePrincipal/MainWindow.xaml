@@ -5,8 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfInterfacePrincipal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Inventario Empresarial Softnow S.A." Height="382.836" Width="499.44">
+
+    <Grid HorizontalAlignment="Left" Width="496">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="315*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="95*"/>
+            <ColumnDefinition Width="87*"/>
+            <ColumnDefinition Width="314*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.RowSpan="3">
+            <Menu x:Name="menuOpciones" DockPanel.Dock="Top" Background="{x:Null}" Height="350" Margin="0,0,-393,0">
+                <MenuItem Header="_Archivo" Click="MenuItem_Click">
+                    <MenuItem x:Name="MenuItemUbicacion" Header="_Ubicación" Click="MenuItemUbicacion_Click" />
+                    <Separator />
+                    <MenuItem x:Name="MenuItemSalida" Header="_Exit" Click="MenuItemSalida_Click" />
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+
+
+        <Label x:Name="lblNombre" Content="Nombre: " HorizontalAlignment="Left" Margin="21,55,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="7,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label x:Name="lblCodigo" Content="Código: " HorizontalAlignment="Left" Margin="21,86,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="0.528,0.396"/>
+        <TextBox x:Name="txtCodigo" HorizontalAlignment="Left" Height="23" Margin="7,92,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label x:Name="lblEstado" Content="Estado: " HorizontalAlignment="Left" Margin="85.212,59,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.17" Grid.Column="2"/>
+        <TextBox x:Name="txtEstado" HorizontalAlignment="Left" Height="23" Margin="165.212,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
+        <Label x:Name="lblUbicacion" Content="Ubicación: " HorizontalAlignment="Left" Margin="85.212,90,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <ComboBox x:Name="comboxUbicacion" HorizontalAlignment="Left" Margin="165.212,90,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.223,1.003" Grid.Column="2"/>
+        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="21,140,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="btnAgregar_Click"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="52,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnActualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="85.212,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2"/>
+        <Button x:Name="btnLimpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="210.212,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2" Click="btnLimpiar_Click"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="167" Margin="21,165,0,0" VerticalAlignment="Top" Width="446" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Código" Width="111" DisplayMemberBinding="{Binding Codigo}"/>
+                    <GridViewColumn Header="Nombre" Width="111" DisplayMemberBinding="{Binding Nombre}"/>
+                    <GridViewColumn Header="Estado" Width="111" DisplayMemberBinding="{Binding Estado}"/>
+                    <GridViewColumn Header="Ubicación" Width="111" DisplayMemberBinding="{Binding Ubicacion}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="lblTitulo" Content="Inventario Empresarial" Grid.Column="1" HorizontalAlignment="Left" Margin="56,10,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="16" Grid.ColumnSpan="2"/>
+
     </Grid>
+
 </Window>
