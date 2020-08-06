@@ -9,17 +9,33 @@ using System.Threading.Tasks;
 
 namespace CapaNegocios
 {
-    public class Ubicacion
-    {
-        public bool CrearUbicacion(string Nombre_Ubicacion)
+    
+    
+    public class Ubicacion { 
+   
+        public string NombreUbicacion;
+
+       
+
+        public Ubicacion(string NombreUbicacion)
+        {
+            NombreUbicacion = NombreUbicacion;
+        }
+        public Ubicacion()
+        {
+
+        }
+
+        public bool CrearUbicacion(string NombreUbicacion)
         {
             try
             {
+                this.NombreUbicacion = NombreUbicacion;
                 Archivo rutas = new Archivo();
                 if (File.Exists(rutas.getRutaUbicacion()))
                 {
                     StreamWriter writer = new StreamWriter(rutas.getRutaUbicacion(), true);
-                    writer.WriteLine(Nombre_Ubicacion + "&");
+                    writer.WriteLine(this.NombreUbicacion + "&");
                     writer.Close();
                     return true;
                 }
@@ -34,6 +50,29 @@ namespace CapaNegocios
                 return false;
             }
             return false;
+        }
+
+        public List<String> LeerUbicaciones() {
+            try
+            {
+                Archivo archivo = new Archivo();
+                StreamReader reader = new StreamReader(archivo.getRutaUbicacion());
+                string aux = reader.ReadToEnd();
+                aux = aux.Replace("\r\n", string.Empty);                
+                String[] Datos = aux.Split('&');
+                int tamañoArreglo = Datos.Length;
+                Array.Clear(Datos, (Datos.Length-1), 1);
+                List<string> ListaUbicaciones = new List<string>();
+                foreach (string item in Datos)
+                {
+                    ListaUbicaciones.Add(item);
+                }
+                return ListaUbicaciones;
+            }   catch(Exception fs)
+            {
+                return null;
+            }           
+        
         }
     }
 }

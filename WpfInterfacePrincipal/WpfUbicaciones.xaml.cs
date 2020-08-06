@@ -25,6 +25,7 @@ namespace WpfInterfacePrincipal
         public WpfUbicaciones()
         {
             InitializeComponent();
+            MostrarLista();
         }
 
         private void btnAgregarUbicacion_Click(object sender, RoutedEventArgs e)
@@ -51,7 +52,37 @@ namespace WpfInterfacePrincipal
             {
                 MessageBox.Show("Error", "Error");
             }
+            MostrarLista();      
 
+        }
+
+        private void btnMostrar_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void listViewUbicacion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+
+
+        private void MostrarLista()
+        {
+
+            Ubicacion ubicacion = new Ubicacion();
+            List<Ubicacion> ListaUbicacion = new List<Ubicacion>();
+            List<string> ListadeDatos = new List<string>();
+            ListadeDatos = ubicacion.LeerUbicaciones();
+            for (int i = 0; i <(ListadeDatos.Count); i++)
+            {
+                ListaUbicacion.Add(new Ubicacion());
+                ListaUbicacion[i].NombreUbicacion = ListadeDatos[i];
+            }
+            listViewUbicacion.ItemsSource = ListadeDatos;
+
+            Console.WriteLine();
         }
     }
 }

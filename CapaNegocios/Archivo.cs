@@ -14,7 +14,7 @@ namespace CapaNegocios
         private string RutaDirectorio = "C:\\Softnow";
         private string BaseDatosUbicacion = "\\Ubicacion.txt";
         private string BaseDatosActivos = "\\Activos.txt";
-
+        
         public string getRutaUbicacion()
         {
             return this.RutaDirectorio + this.BaseDatosUbicacion;
