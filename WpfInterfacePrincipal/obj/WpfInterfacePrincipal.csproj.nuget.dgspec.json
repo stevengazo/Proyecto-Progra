@@ -1,0 +1,71 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Sfabr\\OneDrive - Universidad Hispanoamericana\\Programacion II\\Proyecto\\Inventario Empresarial2\\Inventario Empresarial\\WpfInterfacePrincipal\\WpfInterfacePrincipal.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Sfabr\\OneDrive - Universidad Hispanoamericana\\Programacion II\\Proyecto\\Inventario Empresarial2\\Inventario Empresarial\\CapaNegocios\\CapaNegocios.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Sfabr\\OneDrive - Universidad Hispanoamericana\\Programacion II\\Proyecto\\Inventario Empresarial2\\Inventario Empresarial\\CapaNegocios\\CapaNegocios.csproj",
+        "projectName": "CapaNegocios",
+        "projectPath": "C:\\Users\\Sfabr\\OneDrive - Universidad Hispanoamericana\\Programacion II\\Proyecto\\Inventario Empresarial2\\Inventario Empresarial\\CapaNegocios\\CapaNegocios.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\Sfabr\\OneDrive - Universidad Hispanoamericana\\Programacion II\\Proyecto\\Inventario Empresarial2\\Inventario Empresarial\\WpfInterfacePrincipal\\WpfInterfacePrincipal.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Sfabr\\OneDrive - Universidad Hispanoamericana\\Programacion II\\Proyecto\\Inventario Empresarial2\\Inventario Empresarial\\WpfInterfacePrincipal\\WpfInterfacePrincipal.csproj",
+        "projectName": "WpfInterfacePrincipal",
+        "projectPath": "C:\\Users\\Sfabr\\OneDrive - Universidad Hispanoamericana\\Programacion II\\Proyecto\\Inventario Empresarial2\\Inventario Empresarial\\WpfInterfacePrincipal\\WpfInterfacePrincipal.csproj",
+        "packagesPath": "C:\\Users\\Sfabr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sfabr\\OneDrive - Universidad Hispanoamericana\\Programacion II\\Proyecto\\Inventario Empresarial2\\Inventario Empresarial\\WpfInterfacePrincipal\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\Sfabr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\Sfabr\\OneDrive - Universidad Hispanoamericana\\Programacion II\\Proyecto\\Inventario Empresarial2\\Inventario Empresarial\\CapaNegocios\\CapaNegocios.csproj": {
+                "projectPath": "C:\\Users\\Sfabr\\OneDrive - Universidad Hispanoamericana\\Programacion II\\Proyecto\\Inventario Empresarial2\\Inventario Empresarial\\CapaNegocios\\CapaNegocios.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Microsoft.UI.Xaml": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

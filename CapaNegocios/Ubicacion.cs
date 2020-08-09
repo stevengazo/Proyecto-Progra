@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using CapaNegocios;
 
 namespace CapaNegocios
 {
@@ -13,29 +14,25 @@ namespace CapaNegocios
     
     public class Ubicacion { 
    
-        public string NombreUbicacion;
+        public string nombreUbicacion { get; set; }
 
        
 
-        public Ubicacion(string NombreUbicacion)
-        {
-            NombreUbicacion = NombreUbicacion;
-        }
         public Ubicacion()
         {
-
+            
         }
 
-        public bool CrearUbicacion(string NombreUbicacion)
+        public bool CrearUbicacion(string nombreUbicacion)
         {
             try
             {
-                this.NombreUbicacion = NombreUbicacion;
+                this.nombreUbicacion = nombreUbicacion;
                 Archivo rutas = new Archivo();
                 if (File.Exists(rutas.getRutaUbicacion()))
                 {
                     StreamWriter writer = new StreamWriter(rutas.getRutaUbicacion(), true);
-                    writer.WriteLine(this.NombreUbicacion + "&");
+                    writer.WriteLine(this.nombreUbicacion + "%");
                     writer.Close();
                     return true;
                 }
@@ -56,22 +53,25 @@ namespace CapaNegocios
             try
             {
                 Archivo archivo = new Archivo();
-                StreamReader reader = new StreamReader(archivo.getRutaUbicacion());
-                string aux = reader.ReadToEnd();
-                aux = aux.Replace("\r\n", string.Empty);                
-                String[] Datos = aux.Split('&');
-                int tamañoArreglo = Datos.Length;
-                Array.Clear(Datos, (Datos.Length-1), 1);
                 List<string> ListaUbicaciones = new List<string>();
-                foreach (string item in Datos)
+                StreamReader reader = new StreamReader(archivo.getRutaUbicacion());
+                string[] ArregloUbicaciones;
+                string aux = reader.ReadToEnd();
+                aux = aux.Replace("\r", string.Empty);
+                aux = aux.Replace("\n", string.Empty);
+                ArregloUbicaciones = aux.Split('%');
+                foreach( var item in ArregloUbicaciones)
                 {
                     ListaUbicaciones.Add(item);
+
                 }
-                return ListaUbicaciones;
-            }   catch(Exception fs)
+                return ListaUbicaciones;                
+            }   
+            catch (Exception es)
             {
+                Console.WriteLine("Error");
                 return null;
-            }           
+            }        
         
         }
     }

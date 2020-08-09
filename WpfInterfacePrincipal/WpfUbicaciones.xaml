@@ -26,7 +26,7 @@ Height="434" Width="324" VerticalAlignment="Center" HorizontalAlignment="Center"
         <ListView x:Name="listViewUbicacion" HorizontalAlignment="Left" Height="215" Margin="31,164,0,0" VerticalAlignment="Top" Width="238" Grid.ColumnSpan="3" SelectionChanged="listViewUbicacion_SelectionChanged" Background="#FFE2E2E2" Foreground="#FF3A3939" BorderBrush="#FF110D0D" FontWeight="Bold">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Ubicaciones" Width="200" DisplayMemberBinding="{ Binding NombreUbicacion }"/>
+                    <GridViewColumn Header="Ubicaciones" Width="200" DisplayMemberBinding="{ Binding nombreUbicacion }"/>
                 </GridView>
             </ListView.View>
         </ListView>

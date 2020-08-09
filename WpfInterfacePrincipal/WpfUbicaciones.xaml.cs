@@ -25,7 +25,7 @@ namespace WpfInterfacePrincipal
         public WpfUbicaciones()
         {
             InitializeComponent();
-            MostrarLista();
+            ActualizarListview();
         }
 
         private void btnAgregarUbicacion_Click(object sender, RoutedEventArgs e)
@@ -51,14 +51,12 @@ namespace WpfInterfacePrincipal
             catch (Exception s)
             {
                 MessageBox.Show("Error", "Error");
-            }
-            MostrarLista();      
-
+            }   
         }
 
         private void btnMostrar_Click(object sender, RoutedEventArgs e)
         {
-            
+            ActualizarListview();
         }
 
         private void listViewUbicacion_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -68,21 +66,22 @@ namespace WpfInterfacePrincipal
 
 
 
-        private void MostrarLista()
+        protected void ActualizarListview()
         {
-
             Ubicacion ubicacion = new Ubicacion();
-            List<Ubicacion> ListaUbicacion = new List<Ubicacion>();
-            List<string> ListadeDatos = new List<string>();
-            ListadeDatos = ubicacion.LeerUbicaciones();
-            for (int i = 0; i <(ListadeDatos.Count); i++)
+            List<Ubicacion> ListaUbicaciones = new List<Ubicacion>();
+            List<string> listaux = new List<string>();
+            listaux = ubicacion.LeerUbicaciones();
+            for (int i = 0; i < listaux.Count; i++)
             {
-                ListaUbicacion.Add(new Ubicacion());
-                ListaUbicacion[i].NombreUbicacion = ListadeDatos[i];
+                ListaUbicaciones.Add(new Ubicacion());
+                ListaUbicaciones[i].nombreUbicacion = listaux[i];
             }
-            listViewUbicacion.ItemsSource = ListadeDatos;
-
-            Console.WriteLine();
+            listViewUbicacion.ItemsSource = ListaUbicaciones;
+            Console.WriteLine("prueba");
         }
+
+
+
     }
 }
