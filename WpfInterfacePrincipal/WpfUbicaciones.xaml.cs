@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +23,10 @@ namespace WpfInterfacePrincipal
     public partial class WpfUbicaciones : Window
     {
 
+        private string opcion;
         public WpfUbicaciones()
         {
-            InitializeComponent();
-            ActualizarListview();
+            InitializeComponent();          
         }
 
         private void btnAgregarUbicacion_Click(object sender, RoutedEventArgs e)
@@ -42,13 +43,14 @@ namespace WpfInterfacePrincipal
                         MessageBox.Show("Ubicación agregada");
                         txtNombreUbicacion.Text = string.Empty;
                     }
+
                 }
                 else
                 {
                     MessageBox.Show("El campo no puede estar vacio", "Error");
                 }
             }
-            catch (Exception s)
+            catch (NullReferenceException s)
             {
                 MessageBox.Show("Error", "Error");
             }   
@@ -61,10 +63,63 @@ namespace WpfInterfacePrincipal
 
         private void listViewUbicacion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            try
+            {
+                string seleccion = itemSeleccionado(sender);                
+                txtNombreUbicacion.Text = seleccion;
+               
+            }
+            catch(Exception ia)
+            {
+                MessageBox.Show("Error item no valido", "Error", MessageBoxButton.OK);
+            }
 
         }
 
 
+        private string itemSeleccionado (object sender)
+        {
+            try
+            {
+                ListView instanciaLtv = (ListView)sender;
+                Ubicacion ubicacionSelecionada = (Ubicacion)instanciaLtv.SelectedItem;                   
+                this.opcion  = ubicacionSelecionada.nombreUbicacion;               
+                return ubicacionSelecionada.nombreUbicacion;                      
+            }catch (Exception sd)
+            {
+                Console.WriteLine("error");
+                return null;
+            }                       
+        }
+
+
+     
+        private void btnModificarUbicacion_Click(object sender, RoutedEventArgs e)
+        {
+            Ubicacion ubicacion = new Ubicacion();
+            bool estado = false;
+            string NombreAnterior = this.opcion;
+            string NombreNuevo = txtNombreUbicacion.Text;
+            if (NombreNuevo.Equals(string.Empty) || NombreNuevo.Equals(NombreAnterior))
+            {
+                MessageBox.Show("Digite un nombre valido");
+            }
+            else
+            {
+                estado =ubicacion.modificarNombre(NombreNuevo, NombreAnterior);
+                if (estado)
+                {
+                    MessageBox.Show("Modificación con éxito", "Información", MessageBoxButton.OK);
+
+                }
+                else
+                {
+                    MessageBox.Show("Error al modificar el campo", "Error", MessageBoxButton.OK);
+                }
+            }
+            ActualizarListview();
+           
+        }
 
         protected void ActualizarListview()
         {
@@ -81,7 +136,6 @@ namespace WpfInterfacePrincipal
             Console.WriteLine("prueba");
         }
 
-
-
+       
     }
 }

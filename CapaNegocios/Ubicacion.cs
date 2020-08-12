@@ -13,11 +13,9 @@ namespace CapaNegocios
     
     
     public class Ubicacion { 
-   
+        // Datamembers
         public string nombreUbicacion { get; set; }
-
-       
-
+        //Metodos
         public Ubicacion()
         {
             
@@ -57,13 +55,18 @@ namespace CapaNegocios
                 StreamReader reader = new StreamReader(archivo.getRutaUbicacion());
                 string[] ArregloUbicaciones;
                 string aux = reader.ReadToEnd();
+                reader.Close();
                 aux = aux.Replace("\r", string.Empty);
                 aux = aux.Replace("\n", string.Empty);
                 ArregloUbicaciones = aux.Split('%');
-                foreach( var item in ArregloUbicaciones)
+               /* foreach( var item in ArregloUbicaciones)
                 {
                     ListaUbicaciones.Add(item);
 
+                }*/
+                for (int i = 0; i < (ArregloUbicaciones.Length-1); i++)
+                {
+                    ListaUbicaciones.Add(ArregloUbicaciones[i]);
                 }
                 return ListaUbicaciones;                
             }   
@@ -74,5 +77,27 @@ namespace CapaNegocios
             }        
         
         }
+    
+        public bool modificarNombre(string NombreNuevo, string NombreAnterior)
+        {
+            try
+            {
+                Archivo archivo = new Archivo();
+                StreamReader reader = new StreamReader(archivo.getRutaUbicacion());
+                string text = reader.ReadToEnd();
+                reader.Close();
+                text = text.Replace(NombreAnterior, NombreNuevo);
+                StreamWriter writer = new StreamWriter(archivo.getRutaUbicacion());
+                writer.Write(text);
+                writer.Close();
+                return true;
+            }catch (Exception io)
+            {
+                Console.WriteLine("Error al modificar el dato");
+                return false;
+            }
+        }
+
+    
     }
 }
