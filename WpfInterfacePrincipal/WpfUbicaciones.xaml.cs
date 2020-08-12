@@ -136,6 +136,10 @@ namespace WpfInterfacePrincipal
             Console.WriteLine("prueba");
         }
 
-       
+        private void btnEliminarUbicacion_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Advertencia... Eliminando registro", "Advertencia",MessageBoxButton.OK);
+
+        }
     }
 }

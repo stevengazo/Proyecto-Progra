@@ -98,6 +98,30 @@ namespace CapaNegocios
             }
         }
 
+
+
+        public bool EliminarRegistro(string NombreUbicacion)
+        {
+            try
+            {
+                Archivo archivo = new Archivo();
+                StreamReader reader = new StreamReader(archivo.getRutaUbicacion());
+                string aux = reader.ReadToEnd();
+                reader.Close();
+                List<string> ListAux = new List<string>();
+                aux = aux.Replace("\r", string.Empty);
+                aux = aux.Replace("\n", string.Empty);
+                string[] arrAux = aux.Split('%');
+                
+                return true;
+            }
+            catch (Exception io)
+            {
+                Console.WriteLine("Error al eliminar el dato");
+                return false;
+            }
+            return false;
+        }
     
     }
 }

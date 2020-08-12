@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfInterfacePrincipal"
         mc:Ignorable="d"
-        Title="Inventario Empresarial Softnow S.A." Height="382.836" Width="499.44">
+        Title="Inventario Empresarial Softnow S.A." Height="382.836" Width="499.44" WindowStartupLocation="CenterScreen">
 
     <Grid HorizontalAlignment="Left" Width="496">
         <Grid.RowDefinitions>
