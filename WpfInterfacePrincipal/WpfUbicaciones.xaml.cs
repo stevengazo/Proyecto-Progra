@@ -69,9 +69,9 @@ namespace WpfInterfacePrincipal
                 txtNombreUbicacion.Text = seleccion;
                
             }
-            catch(Exception ia)
+            catch(NullReferenceException ia)
             {
-                MessageBox.Show("Error item no valido", "Error", MessageBoxButton.OK);
+                Console.Write("Error item no valido");
             }
 
         }
@@ -85,7 +85,7 @@ namespace WpfInterfacePrincipal
                 Ubicacion ubicacionSelecionada = (Ubicacion)instanciaLtv.SelectedItem;                   
                 this.opcion  = ubicacionSelecionada.nombreUbicacion;               
                 return ubicacionSelecionada.nombreUbicacion;                      
-            }catch (Exception sd)
+            }catch (NullReferenceException sd)
             {
                 Console.WriteLine("error");
                 return null;
