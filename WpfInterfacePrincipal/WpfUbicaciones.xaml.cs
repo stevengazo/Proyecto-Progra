@@ -27,7 +27,8 @@ namespace WpfInterfacePrincipal
         private string opcion;
         public WpfUbicaciones()
         {
-            InitializeComponent();          
+            InitializeComponent();
+            ActualizarListview();
         }
 
         private void btnAgregarUbicacion_Click(object sender, RoutedEventArgs e)
@@ -50,6 +51,7 @@ namespace WpfInterfacePrincipal
                 {
                     MessageBox.Show("El campo no puede estar vacio", "Error");
                 }
+                ActualizarListview();
             }
             catch (NullReferenceException s)
             {
@@ -68,8 +70,10 @@ namespace WpfInterfacePrincipal
             {
                 string seleccion = itemSeleccionado(sender);                
                 txtNombreUbicacion.Text = seleccion;
-               
+                
             }
+            //Esto presenta problemas al momento de realizar cambios y cargarlos al listview 
+            //La excepción Null es para resolver esto
             catch(NullReferenceException ia)
             {
                 Console.Write("Error item no valido");
@@ -152,8 +156,7 @@ namespace WpfInterfacePrincipal
                 estado = ubicacion.EliminarRegistro(txtNombreUbicacion.Text);
                 if (estado)
                 {
-                    MessageBox.Show((opcion +  " Eliminado"), "Información", MessageBoxButton.OK);
-                    txtNombreUbicacion.Text = string.Empty;
+                    MessageBox.Show((opcion + " Eliminado"), "Información", MessageBoxButton.OK);
                     ActualizarListview();
                 }
                 else
@@ -162,6 +165,7 @@ namespace WpfInterfacePrincipal
                 }
 
             }
+            ActualizarListview();
 
         }
     }
