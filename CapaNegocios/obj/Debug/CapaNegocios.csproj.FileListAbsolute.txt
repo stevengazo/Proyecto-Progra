@@ -3,4 +3,3 @@ C:\Users\Sfabr\OneDrive - Universidad Hispanoamericana\Programacion II\Proyecto\
 C:\Users\Sfabr\OneDrive - Universidad Hispanoamericana\Programacion II\Proyecto\Inventario Empresarial2\Inventario Empresarial\CapaNegocios\obj\Debug\CapaNegocios.csproj.CoreCompileInputs.cache
 C:\Users\Sfabr\OneDrive - Universidad Hispanoamericana\Programacion II\Proyecto\Inventario Empresarial2\Inventario Empresarial\CapaNegocios\obj\Debug\CapaNegocios.dll
 C:\Users\Sfabr\OneDrive - Universidad Hispanoamericana\Programacion II\Proyecto\Inventario Empresarial2\Inventario Empresarial\CapaNegocios\obj\Debug\CapaNegocios.pdb
-C:\Users\Sfabr\OneDrive - Universidad Hispanoamericana\Programacion II\Proyecto\Inventario Empresarial2\Inventario Empresarial\CapaNegocios\obj\Debug\CapaNegocios.csprojAssemblyReference.cache

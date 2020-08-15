@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Packaging;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
 using System.Security.Cryptography.X509Certificates;
@@ -138,7 +139,29 @@ namespace WpfInterfacePrincipal
 
         private void btnEliminarUbicacion_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Advertencia... Eliminando registro", "Advertencia",MessageBoxButton.OK);
+            string opcion = txtNombreUbicacion.Text;
+            if (opcion.Equals(string.Empty))
+            {
+                MessageBox.Show("error digita un sitio");
+            }
+            else
+            {
+                MessageBox.Show("Advertencia... Eliminando registro", "Advertencia", MessageBoxButton.OK);
+                bool estado = false;
+                Ubicacion ubicacion = new Ubicacion();
+                estado = ubicacion.EliminarRegistro(txtNombreUbicacion.Text);
+                if (estado)
+                {
+                    MessageBox.Show((opcion +  " Eliminado"), "Información", MessageBoxButton.OK);
+                    txtNombreUbicacion.Text = string.Empty;
+                    ActualizarListview();
+                }
+                else
+                {
+                    MessageBox.Show((opcion + " no encontrado"), "Error", MessageBoxButton.OK);
+                }
+
+            }
 
         }
     }

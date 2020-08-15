@@ -104,14 +104,36 @@ namespace CapaNegocios
         {
             try
             {
+                bool bandEncontrado = false;
                 Archivo archivo = new Archivo();
                 StreamReader reader = new StreamReader(archivo.getRutaUbicacion());
                 string aux = reader.ReadToEnd();
                 reader.Close();
-                List<string> ListAux = new List<string>();
+                StreamWriter writer = new StreamWriter(archivo.getRutaUbicacion());               
                 aux = aux.Replace("\r", string.Empty);
                 aux = aux.Replace("\n", string.Empty);
                 string[] arrAux = aux.Split('%');
+                foreach( var item in arrAux)
+                {
+                    if (!item.Equals(NombreUbicacion))
+                    {
+                        writer.WriteLine(item + "%");
+                    }
+                    else
+                    {
+                        bandEncontrado = true;
+                    }
+
+                }
+                writer.Close();
+                if (bandEncontrado)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
                 
                 return true;
             }
