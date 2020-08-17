@@ -13,14 +13,17 @@ namespace CapaNegocios
     
     
     public class Ubicacion { 
-        // Datamembers
+        //DATAMEMBERS
         public string nombreUbicacion { get; set; }
-        //Metodos
+        //CONSTRUCTORS
         public Ubicacion()
         {
             
         }
+        //METODOS 
 
+
+        //CREACIÓN DE NUEVOS LUGARES EN LA TABLA
         public bool CrearUbicacion(string nombreUbicacion)
         {
             try
@@ -47,6 +50,8 @@ namespace CapaNegocios
             return false;
         }
 
+
+        //LECTURA Y DEVOLUCIÓN DE LOS DATOS DEL ARCHIVO UBICACION.TXT
         public List<String> LeerUbicaciones() {
             try
             {
@@ -78,6 +83,8 @@ namespace CapaNegocios
         
         }
     
+
+
         public bool modificarNombre(string NombreNuevo, string NombreAnterior)
         {
             try
