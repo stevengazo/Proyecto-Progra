@@ -42,30 +42,30 @@ namespace WpfInterfacePrincipal
             txtEstado.Text = string.Empty;
             txtNombre.Text = string.Empty;
             comboxUbicacion.SelectedItem = string.Empty;
+
+            
+
         }
 
         /// <summary>      
-        /// 
-        /// ACTUALIZACIÓN COMBO BOX  UBICACIONES      
-        /// 
+        /// ACTUALIZACIÓN COMBOBOX UBICACIONES      
         /// Trae las ubicaciones almacenadas en el archivo ubicacion.txt
-        /// 
         /// </summary>
-
+        
         protected void ActualizarCombobox()
         {
             Ubicacion ubicacion = new Ubicacion();
             List<string> Ubicaciones = ubicacion.LeerUbicaciones();
             comboxUbicacion.ItemsSource = Ubicaciones;
             Console.WriteLine();
+
+            Activo nes = new Activo();
         }
    
         /// <summary>
         /// CONPROBACIÓN Y CREACIÓN DE ARCHIVOS DE ALMACENADO
-        ///
         /// Verifica la existencia de los archivos en el disco duro en la ruta establecida 
         /// esto se realiza a nivel interno de la clase Archivo
-        ///
         /// </summary>
         protected void Comprobaciones()
         {
@@ -79,9 +79,7 @@ namespace WpfInterfacePrincipal
 
 
         /// <summary>
-        /// 
         /// COMPROBACIÓN DE OPCIONES SELECCIONADAS    
-        /// 
         /// Comprueba que los campos se encuentren llenos antes de realizar alguna accion
         /// esto se creó pensando en la creación y actualizacion de los datos
         /// no aplica a borrar un registro
