@@ -15,7 +15,7 @@ namespace CapaNegocios
     public class Ubicacion { 
         // Atributos de la clase 
 
-        protected string nombreUbicacion { get; set; }
+        public string nombreUbicacion { get; set; }
         //Constructores de la clase 
         public Ubicacion()
         {
@@ -50,9 +50,9 @@ namespace CapaNegocios
             }
             catch (Exception e)
             {
+                Console.WriteLine("Error en el metodoCrearUbicacion. " + e.Message);
                 return false;
             }
-            return false;
         }
 
 
@@ -85,7 +85,8 @@ namespace CapaNegocios
             }   
             catch (Exception es)
             {
-                Console.WriteLine("Error");
+
+                Console.WriteLine("Error" + es.Message);
                 return null;
             }        
         
@@ -114,7 +115,7 @@ namespace CapaNegocios
                 return true;
             }catch (Exception io)
             {
-                Console.WriteLine("Error al modificar el dato");
+                Console.WriteLine("Error al modificar el dato " + io.Message);
                 return false;
             }
         }
@@ -162,16 +163,13 @@ namespace CapaNegocios
                 else
                 {
                     return false;
-                }
-                
-                return true;
+                }               
             }
             catch (Exception io)
             {
-                Console.WriteLine("Error al eliminar el dato");
+                Console.WriteLine("Error al eliminar el dato " + io.Message);
                 return false;
-            }
-            return false;
+            }            
         }
     
     }

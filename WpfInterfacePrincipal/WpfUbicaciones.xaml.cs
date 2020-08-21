@@ -55,7 +55,7 @@ namespace WpfInterfacePrincipal
             }
             catch (NullReferenceException s)
             {
-                MessageBox.Show("Error", "Error");
+                MessageBox.Show(("Error " + s.Message), "Error");
             }   
         }
 
@@ -92,7 +92,7 @@ namespace WpfInterfacePrincipal
                 return ubicacionSelecionada.nombreUbicacion;                      
             }catch (NullReferenceException sd)
             {
-                Console.WriteLine("error");
+                Console.WriteLine("error " + sd.Message );
                 return null;
             }                       
         }

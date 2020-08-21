@@ -86,6 +86,7 @@ namespace CapaNegocios
             }
             catch (Exception fdf)
             {
+                Console.WriteLine("Error en el metodo CompararArchivos. " + fdf.Message);
                 return false;
             }
 
@@ -113,6 +114,7 @@ namespace CapaNegocios
             }
             catch (Exception es)
             {
+                Console.WriteLine("Error en método CrearDirectorio. " + es.Message);
                 return false;
             }
         }
@@ -138,6 +140,7 @@ namespace CapaNegocios
             }
             catch (Exception fs)
             {
+                Console.WriteLine("Error en el método CrearActivo. " + fs.Message);
                 return false;
             }
         }
@@ -161,8 +164,9 @@ namespace CapaNegocios
                     return true;
                 }
             }
-            catch (Exception fs)
+            catch (Exception wfs)
             {
+                Console.WriteLine("Error en el metodo CrearUbicacion. " + wfs.Message);
                 return false;
             }
         }
