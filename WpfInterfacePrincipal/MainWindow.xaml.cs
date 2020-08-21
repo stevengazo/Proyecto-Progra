@@ -36,14 +36,13 @@ namespace WpfInterfacePrincipal
         //  LIMPIEZA de los textbox y los Combox 
         //  Esto es aplicable luego de la realización de alguna accion de los botones
 
-        private void btnLimpiar_Click(object sender, RoutedEventArgs e)
+        private void limpiarPantalla()
         {
             txtCodigo.Text = string.Empty;
             txtEstado.Text = string.Empty;
             txtNombre.Text = string.Empty;
             comboxUbicacion.SelectedItem = string.Empty;
 
-            
 
         }
 
@@ -51,7 +50,7 @@ namespace WpfInterfacePrincipal
         /// ACTUALIZACIÓN COMBOBOX UBICACIONES      
         /// Trae las ubicaciones almacenadas en el archivo ubicacion.txt
         /// </summary>
-        
+
         protected void ActualizarCombobox()
         {
             Ubicacion ubicacion = new Ubicacion();
@@ -63,7 +62,7 @@ namespace WpfInterfacePrincipal
         }
    
         /// <summary>
-        /// CONPROBACIÓN Y CREACIÓN DE ARCHIVOS DE ALMACENADO
+        /// COMPROBACIÓN Y CREACIÓN DE ARCHIVOS DE ALMACENADO
         /// Verifica la existencia de los archivos en el disco duro en la ruta establecida 
         /// esto se realiza a nivel interno de la clase Archivo
         /// </summary>
@@ -136,9 +135,39 @@ namespace WpfInterfacePrincipal
             this.Close();
         }
 
+        private void btnLimpiar_Click(object sender, RoutedEventArgs e)
+        {
+            limpiarPantalla();
+
+        }
+
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            bool estado = ComprobacionTextBox();
+            bool bandEstadoTxts = ComprobacionTextBox();
+            if (bandEstadoTxts)
+            {
+                bool bandEstadoInsercion = false;
+                Activo activo = new Activo();
+                string nombre, codigo, estado, ubicacion;
+                nombre = txtNombre.Text;
+                codigo = txtCodigo.Text;
+                estado = txtEstado.Text;
+                ubicacion = comboxUbicacion.Text;
+                bandEstadoInsercion = activo.InsertarEquipo(nombre, codigo, estado, ubicacion);
+                if(bandEstadoInsercion)
+                {
+                    MessageBox.Show("Equipo agregado con éxito", "Información", MessageBoxButton.OK);
+                    limpiarPantalla();
+                }
+                else
+                {
+                    MessageBox.Show("Error al introducir el equipo", "Información", MessageBoxButton.OK);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Todos los campos deben encontrarse llenos", "Advertencia", MessageBoxButton.OK);
+            }
         }
 
         private void comboxUbicacion_SelectionChanged(object sender, SelectionChangedEventArgs e)

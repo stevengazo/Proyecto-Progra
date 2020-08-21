@@ -18,9 +18,10 @@ namespace CapaNegocios
         /// <param name="NombreEquipo">Nombre que presenta el equipo.</param>
         /// <param name="EstadoEquipo">Estado actual del equipo.</param>
         /// <param name="UbicacionEquipo">Ubicación del dispositivo.</param>
+        /// <param name="CodigoEquipo">Codigo de identificación del equipo. </param>
         /// <returns>Retorna True si los datos se guardan correctamente. Retorna False si los datos no se guardan</returns>
         /// 
-        public abstract bool InsertarEquipo(string NombreEquipo, string EstadoEquipo, string UbicacionEquipo);
+        public abstract bool InsertarEquipo(string NombreEquipo,string CodigoEquipo,  string EstadoEquipo, string UbicacionEquipo);
 
         //ACTUALIZACION DE DATOS
 
@@ -33,7 +34,7 @@ namespace CapaNegocios
         /// <param name="EstadoEquipo">Actualiza el estado del equipo</param>
         /// <param name="UbicacionEquipo">Actualliza la información del equipo </param>
         /// <returns>Retorna True si los datos se actulizan correctamente. Retorna False si los datos no se guardan</returns>
-        public abstract bool ActualizarEquipo(string NombreEquipo, int CodigoEquipo, string EstadoEquipo, string UbicacionEquipo);
+        public abstract bool ActualizarEquipo(string NombreEquipo, string CodigoEquipo, string EstadoEquipo, string UbicacionEquipo);
 
         //ELIMINACION DE DATOS
 
@@ -42,7 +43,7 @@ namespace CapaNegocios
         /// </summary>
         /// <param name="CodigoEquipo">Codigo del equipo a borrar</param>
         /// <returns>Retorna False si no encuentra el equipo o presenta un error. Retorna True si encuentra el equipo y lo elimina</returns>
-        public abstract bool EliminarEquipo(int CodigoEquipo);
+        public abstract bool EliminarEquipo(string CodigoEquipo);
 
         //LECTURA DE DATOS
 
