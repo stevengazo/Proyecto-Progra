@@ -108,6 +108,7 @@ namespace WpfInterfacePrincipal
             }
             catch (Exception i)
             {
+                Console.WriteLine("Error" + i.Message);
                 return false;
             }
         }
@@ -172,6 +173,20 @@ namespace WpfInterfacePrincipal
 
         private void comboxUbicacion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {         
+        }
+
+        private void comboxUbicacion_GotFocus(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void comboxUbicacion_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            
+        }
+
+        private void comboxUbicacion_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ActualizarCombobox();
         }
     }
 }

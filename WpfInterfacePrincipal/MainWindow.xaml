@@ -36,7 +36,7 @@
         <Label x:Name="lblEstado" Content="Estado: " HorizontalAlignment="Left" Margin="85.212,59,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.17" Grid.Column="2"/>
         <TextBox x:Name="txtEstado" HorizontalAlignment="Left" Height="23" Margin="165.212,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
         <Label x:Name="lblUbicacion" Content="Ubicación: " HorizontalAlignment="Left" Margin="85.212,90,0,0" VerticalAlignment="Top" Grid.Column="2"/>
-        <ComboBox x:Name="comboxUbicacion" ItemsSource="{Binding Ubicaciones}"  HorizontalAlignment="Left" Margin="165.212,90,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.223,1.003" Grid.Column="2" SelectionChanged="comboxUbicacion_SelectionChanged"  />
+        <ComboBox x:Name="comboxUbicacion" ItemsSource="{Binding Ubicaciones}"  HorizontalAlignment="Left" Margin="165.212,90,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.223,1.003" Grid.Column="2" SelectionChanged="comboxUbicacion_SelectionChanged" MouseDoubleClick="comboxUbicacion_MouseDoubleClick"  />
         <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="21,140,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="btnAgregar_Click"/>
         <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="52,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Grid.ColumnSpan="2"/>
         <Button x:Name="btnActualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="85.212,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2"/>
