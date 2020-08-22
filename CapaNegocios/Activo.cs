@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace CapaNegocios
         ///    Atributos de la clase      
         /// </summary>
         public string NombreEquipo { get; set; }
-        public int CodigoEquipo { get; }
+        public string CodigoEquipo { get; set; }
         public string EstadoEquipo { get; set; }
         public string UbicacionEquipo { get; set; }
       
@@ -47,7 +48,7 @@ namespace CapaNegocios
                 Archivo archivo = new Archivo();
                 string ruta = archivo.getRutaActivo();
                 StreamWriter writer = new StreamWriter(ruta, true);
-                writer.WriteLine(CodigoEquipo + "%" + NombreEquipo + "%" + EstadoEquipo + "%" + UbicacionEquipo);
+                writer.WriteLine(CodigoEquipo + "%" + NombreEquipo + "%" + EstadoEquipo + "%" + UbicacionEquipo+"%");
                 writer.Close();
                 return true;               
             }
@@ -57,9 +58,37 @@ namespace CapaNegocios
                 return false;
             }
         }
+
+
+        /// <summary>
+        /// Lectura del archivo "Activo.txt"
+        /// </summary>
+        /// <returns>Retorno de una lista con los datos en el string </returns>
         public override List<string> LecturaEquipos()
         {
-            throw new NotImplementedException();    
+            try
+            {
+
+                Archivo archivo = new Archivo();
+                string ruta = archivo.getRutaActivo();
+                StreamReader reader = new StreamReader(ruta);
+                string aux = reader.ReadToEnd();
+                aux = aux.Replace("\r", string.Empty);
+                aux = aux.Replace("\n", string.Empty);
+                string[] ArregloActivos = aux.Split('%');
+                List<string> listaActivos= new List<string>();
+                for (int i = 0; i < (ArregloActivos.Length-1) ; i++)
+                {
+                    listaActivos.Add(ArregloActivos[i]);
+                }
+                return listaActivos;
+
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine("Error: " + error.Message);
+                return null;
+            }            
         }
 
     }

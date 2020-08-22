@@ -38,16 +38,16 @@
         <Label x:Name="lblUbicacion" Content="Ubicación: " HorizontalAlignment="Left" Margin="85.212,90,0,0" VerticalAlignment="Top" Grid.Column="2"/>
         <ComboBox x:Name="comboxUbicacion" ItemsSource="{Binding Ubicaciones}"  HorizontalAlignment="Left" Margin="165.212,90,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.223,1.003" Grid.Column="2" SelectionChanged="comboxUbicacion_SelectionChanged" MouseDoubleClick="comboxUbicacion_MouseDoubleClick"  />
         <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="21,140,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="btnAgregar_Click"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="52,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="52,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Grid.ColumnSpan="2" Click="btnEliminar_Click"/>
         <Button x:Name="btnActualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="85.212,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2"/>
         <Button x:Name="btnLimpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="210.212,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2" Click="btnLimpiar_Click"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="167" Margin="21,165,0,0" VerticalAlignment="Top" Width="446" Grid.ColumnSpan="3" Grid.RowSpan="2">
+        <ListView x:Name="listViewActivos" HorizontalAlignment="Left" Height="167" Margin="21,165,0,0" VerticalAlignment="Top" Width="446" Grid.ColumnSpan="3" Grid.RowSpan="2">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Código" Width="111" DisplayMemberBinding="{Binding Codigo}"/>
-                    <GridViewColumn Header="Nombre" Width="111" DisplayMemberBinding="{Binding Nombre}"/>
-                    <GridViewColumn Header="Estado" Width="111" DisplayMemberBinding="{Binding Estado}"/>
-                    <GridViewColumn Header="Ubicación" Width="111" DisplayMemberBinding="{Binding Ubicacion}"/>
+                    <GridViewColumn Header="Código" Width="111" DisplayMemberBinding="{Binding CodigoEquipo}"/>
+                    <GridViewColumn Header="Nombre" Width="111" DisplayMemberBinding="{Binding NombreEquipo}"/>
+                    <GridViewColumn Header="Estado" Width="111" DisplayMemberBinding="{Binding EstadoEquipo}"/>
+                    <GridViewColumn Header="Ubicación" Width="111" DisplayMemberBinding="{Binding UbicacionEquipo}"/>
                 </GridView>
             </ListView.View>
         </ListView>
