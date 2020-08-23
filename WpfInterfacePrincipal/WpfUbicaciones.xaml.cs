@@ -92,7 +92,7 @@ namespace WpfInterfacePrincipal
                 return ubicacionSelecionada.nombreUbicacion;                      
             }catch (NullReferenceException sd)
             {
-                Console.WriteLine("error");
+                Console.WriteLine("error"+ sd.Message);
                 return null;
             }                       
         }

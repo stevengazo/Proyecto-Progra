@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Runtime.InteropServices.ComTypes;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +27,85 @@ namespace CapaNegocios
             throw new NotImplementedException();
         }
 
-       
+        /// <summary>
+        /// Elimina un Activo de la base de datos "Activos.txt"
+        /// </summary>
+        /// <param name="CodigoEquipo">Codigo para la identificación del Activo</param>
+        /// <returns>Retorna True si el Activo es eliminado. Retorna False si no es encontrado o presenta algún problema en la ejecución.</returns>
         public override bool EliminarEquipo(string CodigoEquipo)
         {
-            return false; 
+            try
+            {
+                bool bandEncontrado = false;
+                int Posicioncontador = 0;
+                List<string> listaLugares = LecturaEquipos();
+                List<string> NuevaLista = new List<string>();
+                for (int i = 0; i < listaLugares.Count; i++)
+                {
+                    if (listaLugares[i].Equals(CodigoEquipo))
+                    {
+                        Posicioncontador = i;                        
+                        bandEncontrado = true;
+                        break;
+                    }
+                }
+                for (int i = 0; i < (listaLugares.Count); i++)
+                {
+                    if (i == Posicioncontador)
+                    {
+                        bandEncontrado = true;
+                    }
+                    else if(i == (Posicioncontador+1))
+                    {
+                        bandEncontrado = true;
+                    }
+                    else if (i == (Posicioncontador + 2))
+                    {
+                        bandEncontrado = true;
+                    }
+                    else if (i == (Posicioncontador + 3))                    
+                    {
+                        bandEncontrado = true;
+                    }
+                    else
+                    {
+                        NuevaLista.Add(listaLugares[i]);
+                    }
+                }
+                Archivo archivo = new Archivo();
+                StreamWriter writer = new StreamWriter(archivo.getRutaActivo());
+                int posicionFila = 0;
+                int posicionReal = 0;
+                int PosicionRegistro = 0;
+                while(PosicionRegistro < (NuevaLista.Count/4))
+                {
+                    PosicionRegistro = PosicionRegistro + 1;
+                    posicionFila = 0;
+                    while (posicionFila <=3)
+                    {
+                        writer.Write(NuevaLista[posicionReal] + "%" );
+                        posicionFila = posicionFila + 1;
+                        posicionReal = posicionReal +1;
+                    }                   
+                    writer.WriteLine();                   
+                }
+                writer.Close();
+
+
+                if (bandEncontrado)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }                            
+            }
+            catch (Exception efs)
+            {
+                Console.WriteLine("Error en metodo eliminar activo " + efs.Message);
+                return false;
+            }
         }
 
 
@@ -73,6 +149,7 @@ namespace CapaNegocios
                 string ruta = archivo.getRutaActivo();
                 StreamReader reader = new StreamReader(ruta);
                 string aux = reader.ReadToEnd();
+                reader.Close();
                 aux = aux.Replace("\r", string.Empty);
                 aux = aux.Replace("\n", string.Empty);
                 string[] ArregloActivos = aux.Split('%');

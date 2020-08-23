@@ -41,7 +41,7 @@
         <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="52,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Grid.ColumnSpan="2" Click="btnEliminar_Click"/>
         <Button x:Name="btnActualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="85.212,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2"/>
         <Button x:Name="btnLimpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="210.212,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2" Click="btnLimpiar_Click"/>
-        <ListView x:Name="listViewActivos" HorizontalAlignment="Left" Height="167" Margin="21,165,0,0" VerticalAlignment="Top" Width="446" Grid.ColumnSpan="3" Grid.RowSpan="2">
+        <ListView x:Name="listViewActivos" HorizontalAlignment="Left" Height="167" Margin="10,165,0,0" VerticalAlignment="Top" Width="446" Grid.ColumnSpan="3" Grid.RowSpan="2" SelectionChanged="listViewActivos_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Código" Width="111" DisplayMemberBinding="{Binding CodigoEquipo}"/>

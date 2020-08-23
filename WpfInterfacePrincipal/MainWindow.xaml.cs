@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,6 +24,11 @@ namespace WpfInterfacePrincipal
     /// </summary>
     public partial class MainWindow : Window
     {
+        //variables globales para la seleccion de un dato
+        private string nombreSeleccionado;
+        private string CodigoSeleccionada;
+        private string Ubicacionseleccionada;
+        private string EstadoSeleccionado;
 
         //Inicializacion de la interfaz
         public MainWindow()
@@ -35,7 +42,7 @@ namespace WpfInterfacePrincipal
 
         /// Metodos de Actulización y limpieza y comprobaciones
         //  LIMPIEZA de los textbox y los Combox 
-        //  Esto es aplicable luego de la realización de alguna accion de los botones
+        //  Esto es aplicale luego de la realización de alguna accion de los botones
 
         private void limpiarPantalla()
         {
@@ -43,8 +50,6 @@ namespace WpfInterfacePrincipal
             txtEstado.Text = string.Empty;
             txtNombre.Text = string.Empty;
             comboxUbicacion.SelectedItem = null;
-
-
         }
 
 
@@ -170,12 +175,39 @@ namespace WpfInterfacePrincipal
             }
         }
 
+
+        /// <summary>
+        /// Metodo de retorno de objeto seleccionado en el ListView
+        /// </summary>
+        /// <param name="sender">Parametro Sender</param>
+        /// <returns></returns>
+        private void ItemSeleccionado(object sender)        
+        {
+            try
+            {
+                ListView instaciaLstv = (ListView)sender;
+                Activo ActivoSeleccionado = (Activo)instaciaLstv.SelectedItem;
+                this.nombreSeleccionado = ActivoSeleccionado.NombreEquipo;
+                this.EstadoSeleccionado = ActivoSeleccionado.EstadoEquipo;
+                this.Ubicacionseleccionada = ActivoSeleccionado.UbicacionEquipo;
+                this.CodigoSeleccionada = ActivoSeleccionado.CodigoEquipo;
+                //return null;
+            /*
+             Esto puede presentar problemas al momento de realizar cambios la lista enviada al itemSource de listView
+             En desarollo puede presentar problemas. En tiempo de ejecución no muestra ningún problema
+             */    
+            }catch(NullReferenceException errorItem)
+            {
+                Console.WriteLine("Error en la función ItemSeleccionado " + errorItem.Message);
+                //return null;
+            }
+        }
+
         /// <summary>
         /// /   METODOS COMUNES DE LA INTERFAZ  
         ///     Aqui se encuentran los metodos comunes de la interfaz 
         ///     los cambios más generales se encuentran aqui
         /// </summary>
-
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -249,6 +281,38 @@ namespace WpfInterfacePrincipal
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
+            string Opcion = txtCodigo.Text;
+           
+            bool banEstado = false;
+            Activo activo = new Activo();
+            banEstado = activo.EliminarEquipo(Opcion);
+            if (banEstado)
+            {
+                MessageBox.Show("Registro Eliminado con éxito", "Información", MessageBoxButton.OK);
+                ActualizaListView();
+                limpiarPantalla();
+            }
+            else
+            {
+                MessageBox.Show(("El código " + Opcion + " no fue encontrado\nIntentelo de nuevo"), "Error", MessageBoxButton.OK);
+            }            
+        }
+
+        private void listViewActivos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ItemSeleccionado(sender);
+                txtCodigo.Text = this.CodigoSeleccionada;
+                txtEstado.Text = this.EstadoSeleccionado;
+                txtNombre.Text = this.nombreSeleccionado;
+                //comboxUbicacion.SelectedItem = this.Ubicacionseleccionada;
+            }
+            catch(Exception error)
+            {
+                Console.WriteLine("Error " + error.Message);
+            }
+
         }
     }
 }
