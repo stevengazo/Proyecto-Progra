@@ -314,5 +314,31 @@ namespace WpfInterfacePrincipal
             }
 
         }
+
+        private void btnActualizar_Click(object sender, RoutedEventArgs e)
+        {
+            Activo activo = new Activo();
+            string nombre, codigo, ubicacion, estado;
+            nombre = txtNombre.Text;
+            codigo = txtCodigo.Text;
+            ubicacion = comboxUbicacion.Text;
+            estado = txtEstado.Text;
+            bool bandModificado = false;
+            if( nombre.Equals(null) || codigo.Equals(null) || ubicacion.Equals(null) || estado.Equals(null))
+            {
+                MessageBox.Show("Verifica que todos los datos esten introducidos", "Error", MessageBoxButton.OK);
+            }
+            else
+            {
+                bandModificado= activo.ActualizarEquipo(nombre, codigo, estado, ubicacion);
+            }
+
+            if (bandModificado)
+            {
+                MessageBox.Show("Datos actualizados.");
+                limpiarPantalla();
+                ActualizaListView();
+            }
+        }
     }
 }

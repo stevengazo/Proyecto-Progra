@@ -24,7 +24,56 @@ namespace CapaNegocios
         /// METODOS DE LA CLASE UTILIZADOS PARA EL CRUD DE LOS DATOS DE LOS EQUIPOS
         public override bool ActualizarEquipo(string NombreEquipo, string CodigoEquipo, string EstadoEquipo, string UbicacionEquipo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                bool bandModificado = false;
+                bool banEncontrado = false;
+                int index=0;
+                List<string> vs = LecturaEquipos();
+                for (int i = 0; i < vs.Count; i++)
+                {
+                    if (vs[i].Equals(CodigoEquipo))
+                    {
+                        banEncontrado = true;
+                        index = i;
+                        break;
+                    }
+                }
+                if (banEncontrado)
+                {
+                    vs[index] = CodigoEquipo;
+                    vs[index + 1] = NombreEquipo;
+                    vs[index + 2] = EstadoEquipo;
+                    vs[index + 3] = UbicacionEquipo;
+                    bandModificado = true;
+                }
+                if (bandModificado)
+                {
+                    Archivo archivo = new Archivo();
+                    StreamWriter writer = new StreamWriter(archivo.getRutaActivo());
+                    int posicionFila = 0;
+                    int posicionReal = 0;
+                    int PosicionRegistro = 0;
+                    while (PosicionRegistro < (vs.Count / 4))
+                    {
+                        PosicionRegistro = PosicionRegistro + 1;
+                        posicionFila = 0;
+                        while (posicionFila <= 3)
+                        {
+                            writer.Write(vs[posicionReal] + "%");
+                            posicionFila = posicionFila + 1;
+                            posicionReal = posicionReal + 1;
+                        }
+                        writer.WriteLine();
+                    }
+                    writer.Close();
+                }
+                return true;
+            }catch(Exception es)
+            {
+                Console.WriteLine("error en metodo actualizar. Error: " + es.Message);
+                return false;
+            }
         }
 
         /// <summary>
