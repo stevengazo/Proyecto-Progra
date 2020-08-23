@@ -19,7 +19,13 @@
             <ColumnDefinition Width="314*"/>
         </Grid.ColumnDefinitions>
         <DockPanel Grid.RowSpan="3">
-            <Menu x:Name="menuOpciones" DockPanel.Dock="Top" Background="{x:Null}" Height="350" Margin="0,0,-393,0">
+            <Menu x:Name="menuOpciones" DockPanel.Dock="Top" Height="350" Margin="0,0,-393,0">
+                <Menu.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="#FFBD8A8A" Offset="0.996"/>
+                    </LinearGradientBrush>
+                </Menu.Background>
                 <MenuItem Header="_Archivo" Click="MenuItem_Click">
                     <MenuItem x:Name="MenuItemUbicacion" Header="_Ubicación" Click="MenuItemUbicacion_Click" />
                     <Separator />
@@ -36,12 +42,12 @@
         <Label x:Name="lblEstado" Content="Estado: " HorizontalAlignment="Left" Margin="85.212,59,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.17" Grid.Column="2"/>
         <TextBox x:Name="txtEstado" HorizontalAlignment="Left" Height="23" Margin="165.212,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
         <Label x:Name="lblUbicacion" Content="Ubicación: " HorizontalAlignment="Left" Margin="85.212,90,0,0" VerticalAlignment="Top" Grid.Column="2"/>
-        <ComboBox x:Name="comboxUbicacion" ItemsSource="{Binding Ubicaciones}"  HorizontalAlignment="Left" Margin="165.212,90,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.223,1.003" Grid.Column="2" SelectionChanged="comboxUbicacion_SelectionChanged" MouseDoubleClick="comboxUbicacion_MouseDoubleClick"  />
+        <ComboBox x:Name="comboxUbicacion" ItemsSource="{Binding Ubicaciones}"  HorizontalAlignment="Left" Margin="165.212,90,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.223,1.003" Grid.Column="2" SelectionChanged="comboxUbicacion_SelectionChanged" MouseDoubleClick="comboxUbicacion_MouseDoubleClick" MouseLeftButtonUp="comboxUbicacion_MouseLeftButtonUp"  />
         <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="21,140,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="btnAgregar_Click"/>
         <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="52,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Grid.ColumnSpan="2" Click="btnEliminar_Click"/>
         <Button x:Name="btnActualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="85.212,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2" Click="btnActualizar_Click"/>
-        <Button x:Name="btnLimpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="210.212,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2" Click="btnLimpiar_Click"/>
-        <ListView x:Name="listViewActivos" HorizontalAlignment="Left" Height="167" Margin="10,165,0,0" VerticalAlignment="Top" Width="446" Grid.ColumnSpan="3" Grid.RowSpan="2" SelectionChanged="listViewActivos_SelectionChanged">
+        <Button x:Name="btnLimpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="210.212,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2" Click="btnLimpiar_Click" MouseLeftButtonDown="btnLimpiar_MouseLeftButtonDown"/>
+        <ListView x:Name="listViewActivos" HorizontalAlignment="Left" Height="167" Margin="21,165,0,0" VerticalAlignment="Top" Width="446" Grid.ColumnSpan="3" Grid.RowSpan="2" SelectionChanged="listViewActivos_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Código" Width="111" DisplayMemberBinding="{Binding CodigoEquipo}"/>

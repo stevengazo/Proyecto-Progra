@@ -153,9 +153,7 @@ namespace WpfInterfacePrincipal
             {
                 string textoCodigo = txtCodigo.Text;
                 string textoNombre = txtNombre.Text;
-                string textoEstado = txtEstado.Text;
-                string comboboxUbicacion = (string)comboxUbicacion.SelectedItem;
-
+                string textoEstado = txtEstado.Text;              
                 if ( textoCodigo.Equals(string.Empty) || textoNombre.Equals(string.Empty) || (textoEstado.Equals(string.Empty)) )
                 {
                     MessageBox.Show("Error, revisa que los campos esten llenos", "Error", MessageBoxButton.OK);
@@ -306,7 +304,7 @@ namespace WpfInterfacePrincipal
                 txtCodigo.Text = this.CodigoSeleccionada;
                 txtEstado.Text = this.EstadoSeleccionado;
                 txtNombre.Text = this.nombreSeleccionado;
-                //comboxUbicacion.SelectedItem = this.Ubicacionseleccionada;
+                comboxUbicacion.SelectedItem = this.Ubicacionseleccionada;
             }
             catch(Exception error)
             {
@@ -339,6 +337,20 @@ namespace WpfInterfacePrincipal
                 limpiarPantalla();
                 ActualizaListView();
             }
+            else
+            {
+                MessageBox.Show("No se encontró el codigo", "Error", MessageBoxButton.OK);
+            }
+        }
+
+        private void btnLimpiar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void comboxUbicacion_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

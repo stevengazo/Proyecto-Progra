@@ -10,20 +10,29 @@ Height="434" Width="324" VerticalAlignment="Center" HorizontalAlignment="Center"
         WindowStartupLocation="CenterScreen"
         
         >
-    <Grid Margin="0,0,2,-1" Background="#FF1C8BAC">
+    <Grid Margin="0,0,2,-1">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White"/>
+                <GradientStop Color="#FFCDDAE4" Offset="0.876"/>
+                <GradientStop Color="#FF3B6F94" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="95*"/>
+            <ColumnDefinition Width="77*"/>
+            <ColumnDefinition Width="18*"/>
             <ColumnDefinition Width="14*"/>
-            <ColumnDefinition Width="205*"/>
+            <ColumnDefinition Width="38"/>
+            <ColumnDefinition Width="167*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="txtNombreUbicacion" HorizontalAlignment="Left" Height="23" Margin="41,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="121" Grid.Column="2"/>
-        <Label x:Name="lblNombreUbicacion" Content="Nombre Ubicación:" HorizontalAlignment="Left" Margin="31,50,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
-        <Label x:Name="lblUbicacion" Content="Administración de Ubicaciones" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.33,0.677" Grid.ColumnSpan="3" FontWeight="Bold"/>
-        <Button x:Name="btnAgregarUbicacion" Content="Agregar" HorizontalAlignment="Left" Margin="44,81,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="3" Click="btnAgregarUbicacion_Click"/>
-        <Button x:Name="btnModificarUbicacion" Content="Modificar" HorizontalAlignment="Left" Margin="66,81,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2" Click="btnModificarUbicacion_Click"/>
-        <Button x:Name="btnEliminarUbicacion" Content="Eliminar" HorizontalAlignment="Left" Margin="44,122,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="3" Click="btnEliminarUbicacion_Click"/>
-        <Button x:Name="btnMostrar" Content="Mostrar" HorizontalAlignment="Left" Margin="66,122,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2" Click="btnMostrar_Click"/>
-        <ListView x:Name="listViewUbicacion" HorizontalAlignment="Left" Height="215" Margin="31,164,0,0" VerticalAlignment="Top" Width="238" Grid.ColumnSpan="3" SelectionChanged="listViewUbicacion_SelectionChanged" Background="#FFE2E2E2" Foreground="#FF3A3939" BorderBrush="#FF110D0D" FontWeight="Bold">
+        <TextBox x:Name="txtNombreUbicacion" HorizontalAlignment="Left" Height="23" Margin="3,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="121" Grid.Column="4"/>
+        <Label x:Name="lblNombreUbicacion" Content="Nombre Ubicación:" HorizontalAlignment="Left" Margin="31,50,0,0" VerticalAlignment="Top" Grid.ColumnSpan="4"/>
+        <Label x:Name="lblUbicacion" Content="Administración de Ubicaciones" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.33,0.677" Grid.ColumnSpan="5" FontWeight="Bold"/>
+        <Button x:Name="btnAgregarUbicacion" Content="Agregar" HorizontalAlignment="Left" Margin="44,81,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="4" Click="btnAgregarUbicacion_Click"/>
+        <Button x:Name="btnModificarUbicacion" Content="Modificar" HorizontalAlignment="Left" Margin="28,81,0,0" VerticalAlignment="Top" Width="75" Grid.Column="4" Click="btnModificarUbicacion_Click"/>
+        <Button x:Name="btnEliminarUbicacion" Content="Eliminar" HorizontalAlignment="Left" Margin="44,122,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="4" Click="btnEliminarUbicacion_Click"/>
+        <Button x:Name="btnMostrar" Content="Mostrar" HorizontalAlignment="Left" Margin="28,122,0,0" VerticalAlignment="Top" Width="75" Grid.Column="4" Click="btnMostrar_Click"/>
+        <ListView x:Name="listViewUbicacion" HorizontalAlignment="Left" Height="215" Margin="31,164,0,0" VerticalAlignment="Top" Width="238" Grid.ColumnSpan="5" SelectionChanged="listViewUbicacion_SelectionChanged" Background="#FFE2E2E2" Foreground="#FF3A3939" BorderBrush="#FF110D0D" FontWeight="Bold">
             <ListView.View>
                 <GridView >
                     <GridViewColumn Header="Ubicaciones" Width="200" DisplayMemberBinding="{ Binding nombreUbicacion }"/>

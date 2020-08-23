@@ -68,7 +68,14 @@ namespace CapaNegocios
                     }
                     writer.Close();
                 }
-                return true;
+                if( (bandModificado == true) && (banEncontrado == true))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }catch(Exception es)
             {
                 Console.WriteLine("error en metodo actualizar. Error: " + es.Message);
